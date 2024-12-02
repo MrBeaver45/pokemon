@@ -1,0 +1,66 @@
+/* Контейнер для анімації */
+.animation-container {
+  position: relative;
+  width: 100vw; /* Використовуємо всю ширину екрану */
+  height: 100vh; /* Використовуємо всю висоту екрану */
+  margin: 0; /* Вимикаємо маргін для вільного використання екрану */
+  background-image: url('1.jpg'); /* Встановлюємо фон */
+  background-size: cover; /* Забезпечуємо, щоб фон покривав весь екран */
+  background-position: center; /* Центруємо фон */
+  background-repeat: no-repeat; /* Забороняємо повторення фону */
+}
+
+/* Стилі для покемон болла */
+.pokeball {
+  position: absolute;
+  top: 60%; /* Розміщуємо покемон болл трохи нижче */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  z-index: 10; /* покемон бол має бути на передньому плані */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  animation: jump 1s ease-out; /* Анімація підкидання */
+}
+
+/* Анімація для підкидання покемон болла */
+@keyframes jump {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, -70%) scale(1.2); /* Підкидаємо покемон болл вгору */
+  }
+  100% {
+    transform: translate(-50%, -50%); /* Повертаємо на місце */
+  }
+}
+
+/* Зображення для покемон болла */
+.pokeball-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Стилі для покемонів */
+.pokemon-sprite {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1); /* Початковий розмір маленький */
+  width: 80px;
+  height: 80px;
+  opacity: 0; /* Покемон прихований за замовчуванням */
+  display: block;
+  transition: opacity 1s ease, transform 1s ease; /* Анімація */
+}
+
+/* Покемон з класом 'active' стає видимим і рухається */
+.pokemon-sprite.active {
+  opacity: 1;
+  transform: translate(-50%, -150%) scale(2); /* Покемон "вилазить" з покемон болла, збільшується */
+}
